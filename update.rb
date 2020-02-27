@@ -43,16 +43,11 @@ emoji.each do |e|
   end
 end
 
-# unified, first part
-emoji.each do |e|
-  unified = e['unified'].downcase.split('-').first
-  emoji_by_unicode[unified] ||= e
-end
-
 ############################################
 
+num_missing = 0
 
-end_emoji = Dir.glob('tmp/twitter-twemoji-*/2/72x72/*.png').map do |file|
+end_emoji = Dir.glob('tmp/twitter-twemoji-*/assets/72x72/*.png').map do |file|
   unicode = File.basename(file, '.*')
   e = emoji_by_unicode[unicode]
   if e.nil?
@@ -75,9 +70,12 @@ end_emoji = Dir.glob('tmp/twitter-twemoji-*/2/72x72/*.png').map do |file|
     }
   else
     puts "Missing emoji data: #{unicode}"
+    num_missing += 1
     nil
   end
 end
+
+puts "#{num_missing} missing"
 
 end_emoji.compact!
 end_emoji.uniq! { |e| e[:name] }
