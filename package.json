@@ -10,8 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/spaghett1c0de/emoji-css.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Aidan Feldman",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/spaghett1c0de/emoji-css/issues"
   },
